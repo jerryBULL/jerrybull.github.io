@@ -28,7 +28,7 @@
     <body>
         <header>
             <div class="header__title">
-                <a href="#" class="header__title-heading1">Jerry的學習筆記</a>
+                <a href="" class="header__title-heading1">Jerry的學習筆記</a>
                 <p class="header__title-heading2">每天都比前一天進步一點點</p>
             </div>
             <div class="header__nav">
@@ -41,43 +41,47 @@
         </header>
         <div class="body">
             <div class="content">
-                <div class="article">
-                    <a href="" class="article__title">asd嗨嗨</a>
+                <div class="article" v-if="PageArticle.length == 0">
+                    <a @click="GetPages" class="article__title">小弟還在努力學習中</a>
                     <hr class="article__line">
-                    <div class="article__info">
-                        <span class="article__info-time">2021/08/12</span>
-                        <ul class="article__info-tag">
-                            <li><a href="">css</a></li>
-                            <li><a href="">css</a></li>
-                        </ul>
-                    </div>
-                    <a href="">
-                        <img src="/Content/img/Article/test.jpg" class="article__img">
+                    <a @click="GetPages">
+                        <img src="/Content/img/nothing.jpg" class="article__img">
                     </a>
                 </div>
-                <div class="article">
-                    <a href="" class="article__title">asd嗨嗨</a>
+                <div class="article" v-for="article in PageArticle[CurrentPage]">
+                    <a :href="article.article_route" class="article__title">{{ article.title }}</a>
                     <hr class="article__line">
                     <div class="article__info">
-                        <span class="article__info-time">2021/08/12</span>
+                        <span class="article__info-time">{{ article.create_time }}</span>
                         <ul class="article__info-tag">
-                            <li><a href="">css</a></li>
-                            <li><a href="">css</a></li>
+                            <li>
+                                <a v-for="tag in article.tag" @Click="ShowTagArticle(tag)">{{ ArticleTag[tag] }}</a>
+                            </li>
                         </ul>
                     </div>
-                    <a href="">
-                        <img src="/Content/img/Article/test.jpg" class="article__img">
+                    <a :href="article.article_route">
+                        <img :src="article.img_route" class="article__img">
                     </a>
                 </div>
                 <div class="page-box">
                     <ul class="page-box__ul">
-                        <li><a href=""><span class="fa fa-angle-double-left"></span></a></li>
-                        <li><a href=""><span class="fa fa-angle-left"></span></a></li>
-                        <li><a href="" class="active">1</a></li>
-                        <li><a href="">2</a></li>
-                        <li><a href="">3</a></li>
-                        <li><a href=""><span class="fa fa-angle-right"></span></a></li>
-                        <li><a href=""><span class="fa fa-angle-double-right"></span></a></li>
+                        <li><span @click="ChangePage(1)"class="fa fa-angle-double-left"></span></li>
+                        <li>
+                            <span @click="PrevPage" class="fa fa-angle-left"></span>
+                        </li>
+                        <li v-for="page in TotalPage" v-if="((page < 4 && CurrentPage < 3) || TotalPage == 3)">
+                            <span @click="ChangePage(page)" :class="[CurrentPage == page ? 'active' : '']">{{ page }}</span>
+                        </li>
+                        <li v-for="page in TotalPage" v-if="(page > CurrentPage-2 && page < CurrentPage+2 && CurrentPage > 2 && CurrentPage < TotalPage-1 && TotalPage > 3)">
+                            <span @click="ChangePage(page)" :class="[CurrentPage == page ? 'active' : '']">{{ page }}</span>
+                        </li>
+                        <li v-for="page in TotalPage" v-if="(CurrentPage > TotalPage-2 && page > TotalPage-3 && TotalPage > 3)">
+                            <span @click="ChangePage(page)" :class="[CurrentPage == page ? 'active' : '']">{{ page }}</span>
+                        </li>
+                        <li>
+                            <span @click="NextPage" class="fa fa-angle-right"></span>
+                        </li>
+                        <li><span @click="ChangePage(TotalPage)" class="fa fa-angle-double-right"></span></li>
                     </ul>
                 </div>
             </div>
@@ -86,21 +90,15 @@
                     <p class="sidebar-box__title">最新文章</p>
                     <hr class="sidebar-box__line">
                     <ul>
-                        <li><a class="sidebar-box__article-title">aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</a></li>
-                        <li><a class="sidebar-box__article-title">bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb</a></li>
+                        <li v-for="article in LatestArticle">
+                            <a :href="article.article_route" class="sidebar-box__article-title">{{ article.title }}</a>
+                        </li>
                     </ul>
                 </div>
                 <div class="sidebar-box">
                     <p class="sidebar-box__title">標籤</p>
                     <hr class="sidebar-box__line">
-                    <a class="sidebar-box__tag">CSS</a>
-                    <a class="sidebar-box__tag">Html</a>
-                    <a class="sidebar-box__tag">abc</a>
-                    <a class="sidebar-box__tag">def</a>
-                    <a class="sidebar-box__tag">CSS</a>
-                    <a class="sidebar-box__tag">Html</a>
-                    <a class="sidebar-box__tag">abc</a>
-                    <a class="sidebar-box__tag">def</a>
+                    <a class="sidebar-box__tag" v-for="(val,key) in ArticleTag" @Click="ShowTagArticle(key)">{{ val }}</a>
                 </div>
             </div>
         </div>
@@ -113,5 +111,112 @@
             </ul>
         </footer>
         <span class="rocket-icon icon rocket--js"></span>
+
+        <script>
+            $(function(){
+                let body = new Vue({
+                    el:".body",
+                    data:function(){
+                        return{
+                            PageArticle:[],
+                            TotalPage:1,
+                            CurrentPage:1,
+                            LatestArticle:[],
+                            //
+                            ArticleTag:ArticleTag,
+                            Article:Article
+                        }
+                    },
+                    mounted(){
+                        this.GetPages(true);
+                        this.GetLatestArticle();
+                    },
+                    methods: {
+                        ChangePage(page){
+                            var v_this = this;
+                            if(v_this.CurrentPage != page){
+                                v_this.CurrentPage = page;
+                                $(".rocket--js").click();
+                            }
+                        },
+                        PrevPage(){
+                            var v_this = this;
+                            if(v_this.CurrentPage == 1){
+                                return false;
+                            }
+                            v_this.CurrentPage--;
+                            $(".rocket--js").click();
+                        },
+                        NextPage(){
+                            var v_this = this;
+                            if(v_this.CurrentPage == v_this.TotalPage){
+                                return false;
+                            }
+                            v_this.CurrentPage++;
+                            $(".rocket--js").click();
+                        },
+                        ShowTagArticle(tag){
+                            var v_this   = this;
+                            var articles = ArticleFuntion.FilterArticleTag(tag);
+
+                            var page_article = [];
+                            var page_count   = 5;
+                            var page         = 0;
+                            articles.forEach((article,key) => {
+                                if((key)%page_count != 0){
+                                    page_article[page].push(articles[key]);
+                                }else{
+                                    page++;
+                                    page_article[page] = [];
+                                    page_article[page].push(articles[key]);
+                                }
+                            });
+                            $(".rocket--js").click();
+                            v_this.PageArticle = page_article;
+                            v_this.TotalPage   = page == 0 ? 1 : page;
+                        },
+                        GetPages(is_first_load = false){
+                            var v_this   = this;
+                            var articles = v_this.Article;
+
+                            var page_article = [];
+                            var page_count   = 5;
+                            var page         = 0;
+                            articles.forEach((article,key) => {
+                                if((key)%page_count != 0){
+                                    page_article[page].push(articles[key]);
+                                }else{
+                                    page++;
+                                    page_article[page] = [];
+                                    page_article[page].push(articles[key]);
+                                }
+                            });
+                            if(!is_first_load){
+                                $(".rocket--js").click();
+                            }
+                            v_this.PageArticle = page_article;
+                            v_this.TotalPage   = page == 0 ? 1 : page;
+                        },
+                        GetLatestArticle(){
+                            var v_this   = this;
+                            var articles = v_this.Article;
+                            //最新文章
+                            var latest_article = articles;
+                            for (let i = 0; i < latest_article.length; i++) {
+                                for (let j = 0; j < latest_article.length-1; j++) {
+                                    if(latest_article[j]["create_time"] < latest_article[j+1]["create_time"]) {
+                                        let temp = latest_article[j]
+                                        latest_article[j] = latest_article[j+1];
+                                        latest_article[j+1] = temp;
+                                    }
+                                }
+                            }
+                            latest_article.splice(5,latest_article.length-5);
+                            v_this.LatestArticle = latest_article;
+                        },
+                    }
+                })
+            })
+        </script>
     </body>
 </html>

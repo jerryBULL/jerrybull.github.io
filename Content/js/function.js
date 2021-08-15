@@ -185,3 +185,18 @@ var alert = (function(){
         error : error,
     }
 }())
+
+$(function(){
+    $(".rocket--js").click(function () { 
+        $('html,body').animate({ scrollTop: 150 }, 'slow');
+    });
+
+    window.addEventListener("scroll", function(){
+        var body_scrolltop = $(window).scrollTop();
+        if(body_scrolltop > 200){
+            $(".rocket--js").fadeIn("slow");
+        }else{
+            $(".rocket--js").fadeOut("fast");
+        }
+    });
+})

@@ -109,6 +109,9 @@ header .header__nav ul li a:hover{
 .body .content .article{
     margin-top: 1.5rem;
 }
+.body .content a{
+    cursor: pointer;
+}
 .body .content .article__title{
     font-size: 2rem;
     transition: all 0.5s;
@@ -170,16 +173,17 @@ header .header__nav ul li a:hover{
 .body .content .page-box__ul li:last-child{
     border-right: 2px solid;
 }
-.body .content .page-box__ul li a{
+.body .content .page-box__ul li span{
+    cursor: pointer;
     color: #cfc5b0;
     transition: all 0.2s;
     display: inline-block;
     vertical-align: middle;
 }
-.body .content .page-box__ul li a.active{
+.body .content .page-box__ul li span.active{
     color: #ff6768;
 }
-.body .content .page-box__ul li a:hover{
+.body .content .page-box__ul li span:hover{
     color: #ff6768;
 }
 /*-----頁面列表顯示 end-----*/
@@ -191,6 +195,9 @@ header .header__nav ul li a:hover{
 }
 .body .sidebar .sidebar-box{
     margin-top: 1rem;
+}
+.body .sidebar .sidebar-box:last-child{
+    margin-bottom: 1rem;
 }
 .body .sidebar .sidebar-box__title{
     font-weight: bold;
@@ -223,6 +230,7 @@ header .header__nav ul li a:hover{
     transition: all 0.5s;
     font-size: 0.7rem;
     color: #cfc5b0;
+    margin-right: 0.5rem;
 }
 .sidebar-box__tag:hover{
     color: #ffebc4;
@@ -271,6 +279,8 @@ footer .footer-ul{
     display: inline-block;
 }
 .rocket-icon{
+    cursor: pointer;
+    display: none;
     position: fixed;
     bottom: 0.5rem;
     right: 0.5rem;
