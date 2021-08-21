@@ -141,8 +141,10 @@ header .header__nav ul li a:hover{
     border: 2px solid #cfc5b0;
     color: #cfc5b0;
     border-radius: 25px;
-    margin-left: 0.3rem;
     transition: all 0.5s;
+}
+.body .content .article__info-tag li:not(:first-child) a{
+    margin-left: 0.3rem;
 }
 .body .content .article__info-tag li a:hover{
     color: #ffebc4;
@@ -188,6 +190,61 @@ header .header__nav ul li a:hover{
     color: #ff6768;
 }
 /*-----頁面列表顯示 end-----*/
+/*-----文章內容樣式 start-----*/
+.body .content .article__content{
+    margin: 1.5rem auto 0 auto;
+    padding: 0 1rem;
+    color: #cfc5b0;
+    letter-spacing: 3px;
+    width: 650px;
+}
+.body .content .article__content p{
+    margin-bottom: 1rem;
+}
+.body .content .article__content .article__title-heading1{
+    font-size: 2rem;
+    color: #ffebc4;
+}
+.body .content .article__content .article__title-heading2{
+    font-size: 1.8rem;
+    color: #ffebc4;
+}
+.body .content .article__content .article__title-heading3{
+    font-size: 1.6rem;
+    color: #ffebc4;
+}
+.body .content .article__content .article__title-heading4{
+    font-size: 1.4rem;
+    color: #ffebc4;
+}
+.body .content .article__content .article__title-heading5{
+    font-size: 1.2rem;
+    color: #ffebc4;
+}
+.body .content .article__content .article__mark{
+    color: #ff6768;
+    font-weight: 600;
+    margin: 0 0.5rem;
+}
+.body .content .article__content .article__link{
+    margin: 0 0.5rem;
+    color: #37beff;
+    font-weight: 600;
+}
+.body .content .article__content .article__ul{
+    padding-left: 2rem;
+    margin-bottom: 0.5rem;
+}
+.body .content .article__content .article__ul li{
+    list-style-type: circle;
+    margin-bottom: 0.5rem;
+}
+.body .content .article__content .article_img{
+    width: 85%;
+    margin: 1rem auto;
+    display: block;
+}
+/*-----文章內容樣式 end-----*/
 /*-----側邊攔 start-----*/
 .body .sidebar{
     padding: 0 1rem;
@@ -195,10 +252,10 @@ header .header__nav ul li a:hover{
     height: 100%;
 }
 .body .sidebar .sidebar-box{
-    margin-top: 1rem;
+    margin-top: 1.5rem;
 }
-.body .sidebar .sidebar-box:last-child{
-    margin-bottom: 1rem;
+.body .sidebar .sidebar-box:first-child{
+    margin-top: 1rem;
 }
 .body .sidebar .sidebar-box__title{
     font-weight: bold;
@@ -221,7 +278,6 @@ header .header__nav ul li a:hover{
     font-size: 0.7rem;
     color: #cfc5b0;
 }
-
 .sidebar-box__article-title:hover{
     transition: all 0.5s;
     color: #ffebc4;
@@ -290,7 +346,7 @@ footer .footer-ul{
     width: 65px;
     height: 65px;
 }
-.rocket-icon:hover{
+.rocket-icon.show{
     background-image: url("/Content/img/rocket_injection.png");
     animation-name:rocket;
     animation-duration:1.5s;
@@ -365,11 +421,16 @@ footer .footer-ul{
     .body .content .article__info{
         width: 100%;
         min-width: 450px;
+        flex-direction: column;
+    }
+    .body .content .article__info-tag{
+        margin-top: 0.6rem;
     }
     .body .content .article__line{
         min-width: 450px;
     }
-    .body .content .article__img{
+    .body .content .article__img,
+    .body .content .article__content{
         width: 100%;
         min-width: 450px;
     }
@@ -394,7 +455,8 @@ footer .footer-ul{
     .body .content .article__line{
         min-width: 100%;
     }
-    .body .content .article__img{
+    .body .content .article__img,
+    .body .content .article__content{
         width: 100%;
         min-width: 100%;
     }
@@ -418,7 +480,8 @@ footer .footer-ul{
     .body .content .article__line{
         min-width: 340px;
     }
-    .body .content .article__img{
+    .body .content .article__img,
+    .body .content .article__content{
         min-width: 340px;
     }
 /*-----------------------------------------*/

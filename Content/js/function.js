@@ -187,8 +187,11 @@ var alert = (function(){
 }())
 
 $(function(){
-    $(".rocket--js").click(function () { 
-        $('html,body').animate({ scrollTop: $(".header__nav").offset().top + $("body").scrollTop() }, 'slow');
+    $(".rocket--js").click(function () {
+        $(".rocket--js").addClass("show");
+        $('html,body').animate({ scrollTop: $(".header__nav").offset().top + $("body").scrollTop() }, 'slow' ,function(){
+            $(".rocket--js").removeClass("show");
+        });
     });
 
     window.addEventListener("scroll", function(){
