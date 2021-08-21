@@ -1,23 +1,9 @@
-const Article = [
-    {
-        title : "title",
-        tag : ["html"],
-        create_time : "2021/08/14",
-        revise_time : "2021/08/14",
-        img_route : "",
-    },
-    {
-        title : "title2",
-        tag : ["css"],
-        create_time : "2021/08/14",
-        revise_time : "2021/08/14",
-        img_route : "",
-    },
-    {
-        title : "title3",
-        tag : ["js"],
-        create_time : "2021/09/14",
-        revise_time : "2021/08/14",
-        img_route : "",
-    }
-];
+const Article = {
+    // "Demo" : {
+    //     title : "Demo",
+    //     tag : ["html","css"],
+    //     create_time : "2021/08/14",
+    //     img_route : "/Content/img/Article/Demo.jpg",
+    //     article_route:"/Article/2021/08/Demo.html",
+    // },
+};

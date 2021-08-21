@@ -6,11 +6,16 @@ var ArticleFuntion = (function(){
     var FilterArticleTag = function(tag = "html"){
         var filteTag = tag.toLowerCase();
         var ArticleTagList = [];
-        Article.forEach((articleInfo,key) => {
+        var article_array  = [];
+        for(article in Article){
+            article_array.push(Article[article])
+        }
+
+        article_array.forEach((articleInfo,key) => {
             var articleTag = articleInfo.tag;
 
             if($.inArray(filteTag, articleTag) != -1){
-                ArticleTagList.push(Article[key])
+                ArticleTagList.push(article_array[key])
             }
         });
         return ArticleTagList;

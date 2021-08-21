@@ -31,9 +31,9 @@
         <div class="body" v-cloak>
             <div class="content">
                 <div class="article" v-if="PageArticle.length == 0">
-                    <a @click="GetPages" class="article__title">小弟還在努力學習中</a>
+                    <a class="article__title">小弟還在努力學習中</a>
                     <hr class="article__line">
-                    <a @click="GetPages">
+                    <a>
                         <img src="/Content/img/nothing.jpg" class="article__img">
                     </a>
                 </div>
@@ -101,9 +101,32 @@
                         }
                     },
                     mounted(){
-                        this.GetPages(true);
+                        var tag = GetURLParames("tag");
+                        this.ShowTagArticleList(tag);
                     },
                     methods: {
+                        ShowTagArticleList(tag){
+                            var v_this   = this;
+                            var articles = ArticleFuntion.FilterArticleTag(tag);
+
+                            var page_article = [];
+                            var page_count   = 5;
+                            var page         = 0;
+                            articles.forEach((article,key) => {
+                                if((key)%page_count != 0){
+                                    page_article[page].push(articles[key]);
+                                }else{
+                                    page++;
+                                    page_article[page] = [];
+                                    page_article[page].push(articles[key]);
+                                }
+                            });
+                            v_this.PageArticle = page_article;
+                            v_this.TotalPage   = page == 0 ? 1 : page;
+                        },
+                        ShowTagArticle(tag){
+                            location.href = "/Tag.html?tag=" + tag;
+                        },
                         ChangePage(page){
                             var v_this = this;
                             if(v_this.CurrentPage != page){
@@ -124,34 +147,6 @@
                             }
                             v_this.CurrentPage++;
                         },
-                        ShowTagArticle(tag){
-                            location.href = "/Tag.html?tag=" + tag;
-                        },
-                        GetPages(is_first_load = false){
-                            var v_this   = this;
-                            var articles = v_this.Article;
-
-                            var page_article = [];
-                            var page_count   = 5;
-                            var page         = 0;
-                            var count        = 0;
-
-                            for (var article in articles) {
-                                if((count)%page_count != 0){
-                                    page_article[page].push(articles[article]);
-                                }else{
-                                    page++;
-                                    page_article[page] = [];
-                                    page_article[page].push(articles[article]);
-                                }
-                                count++;
-                            }
-                            if(!is_first_load){
-                                $(".rocket--js").click();
-                            }
-                            v_this.PageArticle = page_article;
-                            v_this.TotalPage   = page == 0 ? 1 : page;
-                        }
                     }
                 })
             })

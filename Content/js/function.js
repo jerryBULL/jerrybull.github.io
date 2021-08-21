@@ -185,3 +185,37 @@ var alert = (function(){
         error : error,
     }
 }())
+
+$(function(){
+    $(".rocket--js").click(function () {
+        $(".rocket--js").addClass("show");
+        $('html,body').animate({ scrollTop: $(".header__nav").offset().top + $("body").scrollTop() }, 'slow' ,function(){
+            $(".rocket--js").removeClass("show");
+        });
+    });
+
+    window.addEventListener("scroll", function(){
+        var body_scrolltop = $(window).scrollTop();
+        if(body_scrolltop > $("header").height()){
+            $(".rocket--js").fadeIn("slow");
+        }else{
+            $(".rocket--js").fadeOut("fast");
+        }
+    });
+})
+
+function GetURLParames(param_name = ""){
+    var sPageURL = window.location.search.substring(1);
+    var sURLVariables = sPageURL.split('&');
+    var params = {};
+    sURLVariables.forEach(element => {
+        var param = element.split('=');
+        params[param[0]] = param[1];
+    });
+
+    if(param_name){
+        return params[param_name];
+    }else{
+        return params;
+    }
+}
