@@ -219,3 +219,10 @@ function GetURLParames(param_name = ""){
         return params;
     }
 }
+
+function IsLiveServer(){
+    if(location.hostname == "localhost" || location.hostname == "127.0.0.1"){
+        return false;
+    }
+    return true;
+}
