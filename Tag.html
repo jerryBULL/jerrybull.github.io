@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-Hant-TW">
     <head>
         <meta charset="UTF-8" />
-        <title>Jerry的學習筆記</title>
+        <title>Jerry的學習筆記-Tag</title>
+        <meta name="description" content="學習筆記的標籤"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="icon" href="/Content/img/favicon.ico" type="image/x-icon">
         <!-- jquery-confirm start -->
@@ -39,7 +40,7 @@
                     <a class="article__title">小弟還在努力學習中</a>
                     <hr class="article__line">
                     <a>
-                        <img src="/Content/img/nothing.jpg" class="article__img">
+                        <img src="/Content/img/nothing.jpg" class="article__img" alt="目前尚未撰寫文章">
                     </a>
                 </div>
                 <div class="article" v-for="article in PageArticle[CurrentPage]">
@@ -54,7 +55,7 @@
                         </ul>
                     </div>
                     <a :href="article.article_route">
-                        <img :src="article.img_route" class="article__img">
+                        <img :src="article.img_route" class="article__img" alt="主圖片">
                     </a>
                 </div>
                 <div class="page-box">
