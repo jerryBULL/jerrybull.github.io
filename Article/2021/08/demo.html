@@ -13,7 +13,7 @@
         <link rel="stylesheet" href="/Content/css/lib/jquery-ui/jquery-ui.structure.min.css" />
         <link rel="stylesheet" href="/Content/css/lib/jquery-ui/jquery-ui.theme.min.css" />
         <!-- jquery-ui end -->
-        <link rel="stylesheet" href="/Content/css/lib/lightbox.min.css" />
+        <link rel="stylesheet" href="/Content/css/lib/lightbox/lightbox.min.css" />
         <link rel="stylesheet" href="/Content/css/common.css" />
         <link rel="stylesheet" href="/Content/css/style.css" />
 
@@ -23,6 +23,7 @@
         <script src="/Content/js/lib/jquery-confirm/jquery-confirm.min.js"></script>
         <script src="/Content/js/lib/jquery-ui/jquery-ui.min.js"></script>
         <script src="/Content/js/lib/lightbox.js"></script>
+        <script src="/Content/js/lib/jquery.animateNumber.min.js"></script>
         <script src="/Content/js/Function.js"></script>
         <script src="/Content/js/ArticleList/ArticleList.js"></script>
         <script src="/Content/js/ArticleList/ArticleTag.js"></script>
@@ -38,7 +39,6 @@
                     <div class="article__info">
                         <div>
                             <span>{{ CurrentArticle.create_time }}</span>
-                            <span>( 252  read )</span>
                         </div>
                         <ul class="article__info-tag">
                             <li v-for="tag in CurrentArticle.tag">

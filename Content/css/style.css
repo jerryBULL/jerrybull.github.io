@@ -311,7 +311,6 @@ footer{
     color: #cfc5b0;
 }
 footer a{
-    margin-left: 1rem;
     transition: all 0.5s;
     color: #cfc5b0;
 }
@@ -320,6 +319,10 @@ footer a:hover{
 }
 footer .footer-ul{
     display: flex;
+    margin-bottom: 10px;
+}
+footer .footer-ul a{
+    margin: 0;
 }
 /* footer end */
 /* footer end */
