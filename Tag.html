@@ -118,6 +118,7 @@
                     el:".body",
                     data:function(){
                         return{
+                            PageArticle:[],
                             TotalPage:1,
                             CurrentPage:1,
                             LatestArticle:[],
@@ -127,7 +128,8 @@
                         }
                     },
                     mounted(){
-                        this.GetPages(true);
+                        var tag = GetURLParames("tag");
+                        this.ShowTagArticle(tag);
                         this.GetLatestArticle();
                     },
                     methods: {
@@ -171,6 +173,31 @@
                                 }
                             });
                             $(".rocket--js").click();
+                            v_this.PageArticle = page_article;
+                            v_this.TotalPage   = page == 0 ? 1 : page;
+                        },
+                        GetPages(is_first_load = false){
+                            var v_this   = this;
+                            var articles = v_this.Article;
+
+                            var page_article = [];
+                            var page_count   = 5;
+                            var page         = 0;
+                            var count        = 0;
+
+                            for (var article in articles) {
+                                if((count)%page_count != 0){
+                                    page_article[page].push(articles[article]);
+                                }else{
+                                    page++;
+                                    page_article[page] = [];
+                                    page_article[page].push(articles[article]);
+                                }
+                                count++;
+                            }
+                            if(!is_first_load){
+                                $(".rocket--js").click();
+                            }
                             v_this.PageArticle = page_article;
                             v_this.TotalPage   = page == 0 ? 1 : page;
                         },

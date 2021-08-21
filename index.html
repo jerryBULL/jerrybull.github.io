@@ -156,24 +156,7 @@
                             $(".rocket--js").click();
                         },
                         ShowTagArticle(tag){
-                            var v_this   = this;
-                            var articles = ArticleFuntion.FilterArticleTag(tag);
-
-                            var page_article = [];
-                            var page_count   = 5;
-                            var page         = 0;
-                            articles.forEach((article,key) => {
-                                if((key)%page_count != 0){
-                                    page_article[page].push(articles[key]);
-                                }else{
-                                    page++;
-                                    page_article[page] = [];
-                                    page_article[page].push(articles[key]);
-                                }
-                            });
-                            $(".rocket--js").click();
-                            v_this.PageArticle = page_article;
-                            v_this.TotalPage   = page == 0 ? 1 : page;
+                            location.href = "Tag.html?tag=" + tag;
                         },
                         GetPages(is_first_load = false){
                             var v_this   = this;
