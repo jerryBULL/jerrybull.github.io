@@ -1,3 +1,50 @@
+if(IsArticlePage()){
+    $(function(){
+        $("header").load("../../../View/header.html");
+        $("footer").load("../../../View/footer.html");
+    
+        let ArticleBody = new Vue({
+            el:".body",
+            components: {
+                'sidebar-component': httpVueLoader('/View/vue_component/sidebar.vue')
+            },
+            data:function(){
+                return{
+                    ArticleTag:ArticleTag,
+                    Article:Article,
+                    CurrentArticle:{}
+                }
+            },
+            mounted(){
+                var v_this = this;
+                var CurrentArticleTitle = GetCurrentArticleTitle();
+                if(CurrentArticleTitle === "Demo"){
+                    v_this.CurrentArticle = {
+                        title : "Demo",
+                        tag : ["html","css"],
+                        category : "front_end",
+                        create_time : "2021/08/14",
+                        img_route : "/Content/img/Article/Demo.jpg",
+                        article_route:"/Article/2021/08/Demo.html",
+                    }
+                }else{
+                    v_this.CurrentArticle = v_this.Article[CurrentArticleTitle];
+                }
+            },
+            methods: {
+                ShowTagArticle(tag){
+                    location.href = "/Tag.html?tag=" + tag;
+                }
+            }
+        })
+    
+        lightbox.option({
+            'resizeDuration': 200,
+            'disableScrolling' :true,//禁用滾輪
+        })
+    })
+}
+
 var ArticleFuntion = (function(){
     /**
      * @param string tag 設定的文章類型
@@ -19,6 +66,28 @@ var ArticleFuntion = (function(){
             }
         });
         return ArticleTagList;
+    };
+
+        /**
+     * @param string category 設定的文章類型
+     * @return array 返回對應的文章類型
+     */
+    var FilterArticleCategory = function(category = "html"){
+            var filteCategory = category.toLowerCase();
+            var ArticleCategoryList = [];
+            var article_array  = [];
+            for(article in Article){
+                article_array.push(Article[article])
+            }
+    
+            article_array.forEach((articleInfo,key) => {
+                var articleCategory = articleInfo.category;
+    
+                if(filteCategory === articleCategory){
+                    ArticleCategoryList.push(article_array[key])
+                }
+            });
+            return ArticleCategoryList;
     };
 
     /**
@@ -49,6 +118,7 @@ var ArticleFuntion = (function(){
 
     return {
         FilterArticleTag : FilterArticleTag,
+        FilterArticleCategory : FilterArticleCategory,
         FilterArticleCreateTime : FilterArticleCreateTime,
     }
 }());

@@ -2,8 +2,8 @@
 <html lang="zh-Hant-TW">
     <head>
         <meta charset="UTF-8" />
-        <title>Jerry的學習筆記</title>
-        <meta name="description" content="努力增進Html、CSS、JavaScript和一些JS套件&VUE的技能，把學到的記錄在'Jerry的學習筆記'中，並警惕自己不再踩一樣的坑或是幫助其他人，每天都比前一天進步一點點。"/>
+        <title>Jerry的學習筆記-Tag</title>
+        <meta name="description" content="學習筆記的標籤"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="icon" href="/Content/img/favicon.ico" type="image/x-icon">
         <!-- jquery-confirm start -->
@@ -38,9 +38,9 @@
         <div class="body" v-cloak>
             <div class="content">
                 <div class="article" v-if="PageArticle.length == 0">
-                    <a @click="GetPages" class="article__title">小弟還在努力學習中</a>
+                    <a class="article__title">小弟還在努力學習中</a>
                     <hr class="article__line">
-                    <a @click="GetPages">
+                    <a>
                         <img src="/Content/img/nothing.jpg" class="article__img" alt="目前尚未撰寫文章">
                     </a>
                 </div>
@@ -101,14 +101,38 @@
                             TotalPage:1,
                             CurrentPage:1,
                             //
+                            ArticleCategory:ArticleCategory,
                             ArticleTag:ArticleTag,
                             Article:Article
                         }
                     },
                     mounted(){
-                        this.GetPages(true);
+                        var category = GetURLParames("category");
+                        this.ShowCategoryArticleList(category);
                     },
                     methods: {
+                        ShowCategoryArticleList(category){
+                            var v_this   = this;
+                            var articles = ArticleFuntion.FilterArticleCategory(category);
+
+                            var page_article = [];
+                            var page_count   = 5;
+                            var page         = 0;
+                            articles.forEach((article,key) => {
+                                if((key)%page_count != 0){
+                                    page_article[page].push(articles[key]);
+                                }else{
+                                    page++;
+                                    page_article[page] = [];
+                                    page_article[page].push(articles[key]);
+                                }
+                            });
+                            v_this.PageArticle = page_article;
+                            v_this.TotalPage   = page == 0 ? 1 : page;
+                        },
+                        ShowTagArticle(tag){
+                            location.href = "/Tag.html?tag=" + tag;
+                        },
                         ChangePage(page){
                             var v_this = this;
                             if(v_this.CurrentPage != page){
@@ -129,34 +153,6 @@
                             }
                             v_this.CurrentPage++;
                         },
-                        ShowTagArticle(tag){
-                            location.href = "/Tag.html?tag=" + tag;
-                        },
-                        GetPages(is_first_load = false){
-                            var v_this   = this;
-                            var articles = v_this.Article;
-
-                            var page_article = [];
-                            var page_count   = 5;
-                            var page         = 0;
-                            var count        = 0;
-
-                            for (var article in articles) {
-                                if((count)%page_count != 0){
-                                    page_article[page].push(articles[article]);
-                                }else{
-                                    page++;
-                                    page_article[page] = [];
-                                    page_article[page].push(articles[article]);
-                                }
-                                count++;
-                            }
-                            if(!is_first_load){
-                                $(".rocket--js").click();
-                            }
-                            v_this.PageArticle = page_article;
-                            v_this.TotalPage   = page == 0 ? 1 : page;
-                        }
                     }
                 })
             })

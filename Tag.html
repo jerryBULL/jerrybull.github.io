@@ -20,6 +20,7 @@
         <script src="/Content/js/function.js"></script>
         <script src="/Content/js/ArticleList/ArticleList.js"></script>
         <script src="/Content/js/ArticleList/ArticleTag.js"></script>
+        <script src="/Content/js/ArticleList/ArticleCategory.js"></script>
         <script src="/Content/js/ArticleList/ArticleFuntion.js"></script>
 
         <!-- Global site tag (gtag.js) - Google Analytics -->
@@ -80,11 +81,9 @@
                     </ul>
                 </div>
             </div>
-            <sidebar-component :article_tag="ArticleTag" :article="Article" :article_tag="ArticleTag" :show_tag_article="ShowTagArticle"><sidebar-component>
+            <sidebar-component :article_tag="ArticleTag" :article="Article" :article_tag="ArticleTag"><sidebar-component>
         </div>
         <footer></footer>
-        <!-- 火箭 -->
-        <span class="rocket-icon icon rocket--js"></span>
 
         <script>
             $(function(){

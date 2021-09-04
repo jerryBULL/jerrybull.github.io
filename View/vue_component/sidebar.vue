@@ -3,9 +3,24 @@
         <div class="sidebar-box">
             <p class="sidebar-box__title">最新文章</p>
             <hr class="sidebar-box__line">
-            <ul>
+            <ul v-if="LatestArticle.length !== 0">
                 <li v-for="article in LatestArticle">
                     <a :href="article.article_route" class="sidebar-box__article-title">{{ article.title }}</a>
+                </li>
+            </ul>
+            <ul v-else>
+                <li>
+                    <a href="javascript:void(0);" class="sidebar-box__article-title">尚未更新文章</a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="sidebar-box">
+            <p class="sidebar-box__title">分類</p>
+            <hr class="sidebar-box__line">
+            <ul>
+                <li class="sidebar-box__category-li" v-for="(val,key) in ArticleCategory">
+                    <a class="sidebar-box__category" :class="{'active':CurrenCategory==key}" @Click="ShowCategoryArticle(key)">{{ val }}</a>
                 </li>
             </ul>
         </div>
@@ -13,23 +28,35 @@
         <div class="sidebar-box">
             <p class="sidebar-box__title">標籤</p>
             <hr class="sidebar-box__line">
-            <a class="sidebar-box__tag" v-for="(val,key) in article_tag" @Click="show_tag_article(key)">{{ val }}</a>
+            <div class="sidebar-box__tag-box">
+                <a class="sidebar-box__tag" :class="{'active':CurrenTag==key}" v-for="(val,key) in article_tag" @Click="ShowTagArticle(key)">{{ val }}</a>
+            </div>
         </div>
     </div>
 </template>
 
 <script>
     module.exports = {
-        props: ["article_tag","article","show_tag_article"],
+        props: ["article_tag","article"],
         data: function() {
             return {
-                LatestArticle:[]
+                LatestArticle:[],
+                ArticleCategory : ArticleCategory,
+                //
+                CurrenTag : GetURLParames("tag"),
+                CurrenCategory : GetURLParames("category"),
             }
         },
         mounted(){
             this.GetLatestArticle();
         },
         methods: {
+            ShowCategoryArticle(category){
+                location.href = "/Category.html?category=" + category;
+            },
+            ShowTagArticle(tag){
+                location.href = "/Tag.html?tag=" + tag;
+            },
             GetLatestArticle(){
                 var v_this   = this;
                 

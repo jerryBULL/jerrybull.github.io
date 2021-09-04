@@ -22,6 +22,7 @@
         <script src="/Content/js/function.js"></script>
         <script src="/Content/js/ArticleList/ArticleList.js"></script>
         <script src="/Content/js/ArticleList/ArticleTag.js"></script>
+        <script src="/Content/js/ArticleList/ArticleCategory.js"></script>
         <script src="/Content/js/ArticleList/ArticleFuntion.js"></script>
 
         <!-- Global site tag (gtag.js) - Google Analytics -->
@@ -60,14 +61,19 @@
                         <p class="article__title-heading3">heading3</p>
                         <p class="article__title-heading4">heading4</p>
                         <p class="article__title-heading5">heading5</p>
+                        <hr class="article__hr">
                         <p>
                             普通文字
                             <span class="article__mark">重要文字</span>
                             <a class="article__link" href="">連結</a>
                         </p>
-                        <ul class="article__ul">
+                        <ul class="article__ul-circle">
                             <li>列表1</li>
                             <li>列表2</li>
+                        </ul>
+                        <ul class="article__ul-number">
+                            <li>數字列表1</li>
+                            <li>數字列表2</li>
                         </ul>
                         <a href="/Content/img/Article/Demo.jpg" data-lightbox="image-1" data-title="這是個圖片標題">
                             <img class="article_img" src="/Content/img/Article/Demo.jpg" alt="內容圖片">
@@ -75,48 +81,8 @@
                     </div>
                 </div>
             </div>
-            <sidebar-component :article_tag="ArticleTag" :article="Article" :article_tag="ArticleTag" :show_tag_article="ShowTagArticle"><sidebar-component>
+            <sidebar-component :article_tag="ArticleTag" :article="Article" :article_tag="ArticleTag"><sidebar-component>
         </div>
         <footer></footer>
-        <!-- 火箭 -->
-        <span class="rocket-icon icon rocket--js"></span>
-
-        <script>
-            $(function(){
-                $("header").load("../../../View/header.html");
-                $("footer").load("../../../View/footer.html");
-
-                let body = new Vue({
-                    el:".body",
-                    components: {
-                        'sidebar-component': httpVueLoader('/View/vue_component/sidebar.vue')
-                    },
-                    data:function(){
-                        return{
-                            ArticleTag:ArticleTag,
-                            Article:Article,
-                            //CurrentArticle:Article["文章名稱"]
-                            CurrentArticle:{
-                                    title : "Demo",
-                                    tag : ["html","css"],
-                                    create_time : "2021/08/14",
-                                    img_route : "/Content/img/Article/Demo.jpg",
-                                    article_route:"/Article/2021/08/Demo.html",
-                            }
-                        }
-                    },
-                    methods: {
-                        ShowTagArticle(tag){
-                            location.href = "/Tag.html?tag=" + tag;
-                        }
-                    }
-                })
-
-                lightbox.option({
-                    'resizeDuration': 200,
-                    'disableScrolling' :true,//禁用滾輪
-                })
-            })
-        </script>
     </body>
 </html>

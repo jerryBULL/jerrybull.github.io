@@ -1,3 +1,52 @@
+//---------- 專案獨用 ----------
+//---------- 專案獨用 ----------
+//---------- 專案獨用 ----------
+function GetCurrentArticleTitle(){
+    var article_title = window.location.pathname;
+    article_title = article_title.split('/');
+    article_title = article_title[article_title.length-1];
+    article_title = article_title.split('.');
+    return article_title[0];
+}
+
+//---------- 判斷類 ----------
+//---------- 判斷類 ----------
+//---------- 判斷類 ----------
+function IsArticlePage(){
+    var pathname = window.location.pathname;
+    pathname = pathname.split('/');
+    if(pathname[1] == "Article"){
+        return true;
+    }
+    return false;
+}
+
+function IsLiveServer(){
+    if(location.hostname == "localhost" || location.hostname == "127.0.0.1"){
+        return false;
+    }
+    return true;
+}
+
+//---------- 共用類 ----------
+//---------- 共用類 ----------
+//---------- 共用類 ----------
+function GetURLParames(param_name = ""){
+    var sPageURL = window.location.search.substring(1);
+    var sURLVariables = sPageURL.split('&');
+    var params = {};
+    sURLVariables.forEach(element => {
+        var param = element.split('=');
+        params[param[0]] = param[1];
+    });
+
+    if(param_name){
+        return params[param_name];
+    }else{
+        return params;
+    }
+}
+
 var CallAjax = (function(){
     var RequsetGet = function(url, param, callback, before, comple, fail){
         url      = url || "";
@@ -185,44 +234,3 @@ var alert = (function(){
         error : error,
     }
 }())
-
-$(function(){
-    $(".rocket--js").click(function () {
-        $(".rocket--js").addClass("show");
-        $('html,body').animate({ scrollTop: $(".header__nav").offset().top + $("body").scrollTop() }, 'slow' ,function(){
-            $(".rocket--js").removeClass("show");
-        });
-    });
-
-    window.addEventListener("scroll", function(){
-        var body_scrolltop = $(window).scrollTop();
-        if(body_scrolltop > $("header").height()){
-            $(".rocket--js").fadeIn("slow");
-        }else{
-            $(".rocket--js").fadeOut("fast");
-        }
-    });
-})
-
-function GetURLParames(param_name = ""){
-    var sPageURL = window.location.search.substring(1);
-    var sURLVariables = sPageURL.split('&');
-    var params = {};
-    sURLVariables.forEach(element => {
-        var param = element.split('=');
-        params[param[0]] = param[1];
-    });
-
-    if(param_name){
-        return params[param_name];
-    }else{
-        return params;
-    }
-}
-
-function IsLiveServer(){
-    if(location.hostname == "localhost" || location.hostname == "127.0.0.1"){
-        return false;
-    }
-    return true;
-}

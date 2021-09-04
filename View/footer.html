@@ -1,3 +1,6 @@
+<!-- 火箭 -->
+<span class="rocket-icon icon rocket--js"></span>
+
 <p>© 2021-2021&emsp;<a href="/index.html">Jerry的學習筆記</a></p>
 <ul class="footer-ul">
     <li>
@@ -15,5 +18,21 @@
             var src = "https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2Fgjbae1212%2Fhit-counter";
         }
         $("#hits").attr("src",src);
+
+        $(".rocket--js").click(function () {
+            $(".rocket--js").addClass("show");
+            $('html,body').animate({ scrollTop: $(".header__nav").offset().top + $("body").scrollTop() }, 'slow' ,function(){
+                $(".rocket--js").removeClass("show");
+            });
+        });
+
+        window.addEventListener("scroll", function(){
+            var body_scrolltop = $(window).scrollTop();
+            if(body_scrolltop > $("header").height()){
+                $(".rocket--js").fadeIn("slow");
+            }else{
+                $(".rocket--js").fadeOut("fast");
+            }
+        });
     })
 </script>
