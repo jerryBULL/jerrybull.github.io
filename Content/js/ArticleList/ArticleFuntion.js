@@ -18,7 +18,7 @@ if(IsArticlePage()){
             mounted(){
                 var v_this = this;
                 var CurrentArticleTitle = GetCurrentArticleTitle();
-                if(CurrentArticleTitle === "Demo"){
+                if(CurrentArticleTitle === "demo"){
                     v_this.CurrentArticle = {
                         title : "Demo",
                         tag : ["html","css"],

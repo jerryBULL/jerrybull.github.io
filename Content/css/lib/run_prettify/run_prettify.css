@@ -1,0 +1,115 @@
+.str{
+    color: #EC7600;
+}
+.kwd{
+    color: #93C763;
+}
+.com{
+    color: #66747B;
+}
+.typ{
+    color: #678CB1;
+}
+.lit{
+    color: #FACD22;
+}
+.pun{
+    color: #F1F2F3;
+}
+.pln{
+    color: #F1F2F3;
+}
+.tag{
+    color: #8AC763;
+}
+.atn{
+    color: #E0E2E4;
+}
+.atv{
+    color: #EC7600;
+}
+.dec{
+    color: purple;
+}
+pre.prettyprint{
+    min-width: 300px;
+    margin: 0 auto;
+    width: 90%;
+    border: 0px solid #888;
+    overflow: hidden;
+    border-radius: 10px;
+    padding: 0.5rem 0;
+}
+ol.linenums{
+    padding-left: 45px;
+    overflow-x: auto;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+ol.linenums::-webkit-scrollbar-track-piece {
+    width:8px;
+    height:4px;
+    background-color:#f0f0f0
+}
+ol.linenums::-webkit-scrollbar {
+    width:8px;
+    height:4px;
+    background-color:#666
+}
+ol.linenums::-webkit-scrollbar-thumb {
+    width:8px;
+    height:4px;
+    background-color:#666
+}
+ol.linenums::-webkit-scrollbar-thumb:hover {
+    width:8px;
+    height:4px;
+    background-color:#2e2e2e
+}
+.prettyprint {
+    background: #e4e4e4;
+}
+li.L0, li.L1, li.L2, li.L3, li.L4, li.L5, li.L6, li.L7, li.L8, li.L9{
+    color: #555;
+    list-style-type: decimal!important;
+}
+li.L1, li.L3, li.L5, li.L7, li.L9 {
+    background: #292929;
+}
+
+@media print{
+    .str{
+        color: #060;
+    }
+    .kwd{
+        color: #006;
+        font-weight: bold;
+    }
+    .com{
+        color: #600;
+        font-style: italic;
+    }
+    .typ{
+        color: #404;
+        font-weight: bold;
+    }
+    .lit{
+        color: #044;
+    }
+    .pun{
+        color: #440;
+    }
+    .pln{
+        color: #000;
+    }
+    .tag{
+        color: #006;
+        font-weight: bold;
+    }
+    .atn{
+        color: #404;
+    }
+    .atv{
+        color: #060;
+    }
+}
