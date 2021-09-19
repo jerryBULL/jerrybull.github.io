@@ -4,15 +4,15 @@ const Article = {
     //     tag : ["html","css"],
     //     category : "front_end",
     //     create_time : "2021/08/14",
-    //     img_route : "/Content/img/Article/Demo.jpg",
+    //     img_route : "/Content/img/Article/2021/08/Demo/Demo.jpg",
     //     article_route:"/Article/2021/08/Demo.html",
     // },
     "CSS_Specificity" : {
         title : "CSS權重(CSS Specificity)",
-        tag : ["html","css"],
+        tag : ["css"],
         category : "front_end",
         create_time : "2021/09/19",
-        img_route : "/Content/img/Article/CSS_Specificity.jpg",
+        img_route : "/Content/img/Article/2021/09/CSS_Specificity/CSS_Specificity.jpg",
         article_route:"/Article/2021/09/CSS_Specificity.html",
     },
 };

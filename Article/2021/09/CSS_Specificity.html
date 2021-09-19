@@ -2,8 +2,8 @@
 <html lang="zh-Hant-TW">
     <head>
         <meta charset="UTF-8" />
-        <title>Jerry的學習筆記-Demo</title>
-        <meta name="description" content="Deom用"/>
+        <title>CSS權重(CSS Specificity)-Jerry的學習筆記</title>
+        <meta name="description" content="大概介紹CSS權重(CSS Specificity)，權重的意思就是CSS的優先權。優先權越高就會覆蓋掉優先權低的樣式。"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="icon" href="/Content/img/favicon.ico" type="image/x-icon">
         <!-- jquery-confirm start -->
@@ -19,7 +19,7 @@
         <script src="/Content/js/lib/httpVueLoader.js"></script>
         <script src="/Content/js/lib/jquery-3.5.1.min.js"></script>
         <script src="/Content/js/lib/jquery-confirm/jquery-confirm.min.js"></script>
-        <script src="/Content/js/lib/lightbox.js"></script>
+        <!-- <script src="/Content/js/lib/lightbox.js"></script> -->
         <script src="/Content/js/lib/run_prettify.js"></script>
         <script src="/Content/js/function.js"></script>
         <script src="/Content/js/ArticleList/ArticleList.js"></script>
@@ -61,41 +61,62 @@
                         <!-- 文章內容 start -->
                         <p class="article__title-heading1">前言</p>
                         <p>權重的意思就是CSS的優先權。</p>
-                        <p>相同權重的情況下後寫的CSS可以覆蓋先寫的CSS。</p>
                         <p>當兩個選擇器同時作用在一個元素，權重高的優先生效。</p>
                         <hr class="article__hr">
-                        <p class="article__title-heading1">各個權重</p>
+                        <p class="article__title-heading1">注意事項</p>
+                        <ul class="article__ul-circle">
+                            <li>由權重低依序向上介紹。</li>
+                            <li>
+                                權重大小最左邊的權重最高，最右邊的權重最低。
+                                <p>ex：0-0-0-1 < 0-0-1-0</p>
+                            </li>
+                            <li>如果權重相同時，越後面寫的的會覆蓋掉前面的。</li>
+                        </ul>
+                        <hr class="article__hr">
+                        <p class="article__title-heading1">各個權重介紹</p>
                         <p class="article__small_title">*</p>
-                        <p>0-0-0-0</p>
+                        <p class="article__mark_no_margin">0-0-0-0</p>
                         <p>全站預設值。</p>
                         <div class="spaceH0_75"></div>
-                        <p class="article__small_title">Element</p>
-                        <p>0-0-0-0</p>
-                        <p>Element種類很多，例如：div,ul,li,ol....等，可查看HTML元素。</p>
+                        <p class="article__small_title">element</p>
+                        <p class="article__mark_no_margin">0-0-0-1</p>
+                        <p>
+                            element種類很多，例如：div、ul、li....等，可查看
+                            <a class="article__link" target="_blank" href="https://developer.mozilla.org/zh-TW/docs/Web/HTML/Element">HTML元素</a>。
+                        </p>
                         <div class="spaceH0_75"></div>
                         <p class="article__small_title">attribute（屬性選擇器）</p>
-                        <p>0-0-0-0</p>
-                        <p>全站預設值。</p>
+                        <p class="article__mark_no_margin">0-0-1-0。</p>
+                        <p>[type=email]、[type:checkbox]、[attr]...等</p>
                         <div class="spaceH0_75"></div>
-                        <p class="article__small_title">psuedo-class(偽類)</p>
-                        <p>0-0-0-0</p>
-                        <p>全站預設值。</p>
+                        <p class="article__small_title">psuedo-class（偽類）</p>
+                        <p class="article__mark_no_margin">0-0-1-0。</p>
+                        <p>:link、:hover、:focus、:nth-child()...等。</p>
                         <div class="spaceH0_75"></div>
                         <p class="article__small_title">class</p>
-                        <p>0-0-0-0</p>
-                        <p>全站預設值。</p>
+                        <p class="article__mark_no_margin">0-0-1-0</p>
                         <div class="spaceH0_75"></div>
-                        <p class="article__small_title">ID</p>
-                        <p>0-0-0-0</p>
-                        <p>全站預設值。</p>
+                        <p class="article__small_title">id</p>
+                        <p class="article__mark_no_margin">0-1-0-0</p>
                         <div class="spaceH0_75"></div>
                         <p class="article__small_title">inline style</p>
-                        <p>0-0-0-0</p>
-                        <p>全站預設值。</p>
+                        <p class="article__mark_no_margin">1-0-0-0</p>
+                        <p>直接寫在Html行內的style。</p>
                         <div class="spaceH0_75"></div>
                         <p class="article__small_title">!important</p>
-                        <p>0-0-0-0</p>
-                        <p>全站預設值。</p>
+                        <p class="article__mark_no_margin">1-0-0-0-0</p>
+                        <p>最強大的存在，只有自己(!important)能夠超越自己。</p>
+                        <p>使用時需要謹慎使用，不然當樣式多了會很難維護。</p>
+                        <hr class="article__hr">
+                        <p class="article__title-heading1">好文推薦</p>
+                        <ul class="article__ul-number">
+                            <li>
+                                <a class="article__link" target="_blank" href="https://muki.tw/tech/css-specificity-document/">強烈推薦收藏好物 – CSS Specificity (CSS 權重一覽)</a>
+                            </li>
+                            <li>
+                                <a class="article__link" target="_blank" href="https://ithelp.ithome.com.tw/articles/10196454">Day20：小事之 CSS 權重 (css specificity)</a>
+                            </li>
+                        </ul>
                         <!-- 文章內容 end -->
                     </div>
                 </div>

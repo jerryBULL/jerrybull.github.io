@@ -24,7 +24,7 @@ if(IsArticlePage()){
                         tag : ["html","css"],
                         category : "front_end",
                         create_time : "2021/08/14",
-                        img_route : "/Content/img/Article/Demo.jpg",
+                        img_route : "/Content/img/Article/2021/08/Demo/Demo.jpg",
                         article_route:"/Article/2021/08/Demo.html",
                     }
                 }else{
@@ -38,10 +38,12 @@ if(IsArticlePage()){
             }
         })
     
-        lightbox.option({
-            'resizeDuration': 200,
-            'disableScrolling' :true,//禁用滾輪
-        })
+        if(typeof(lightbox) !== "undefined"){
+            lightbox.option({
+                'resizeDuration': 200,
+                'disableScrolling' :true,//禁用滾輪
+            })
+        }
     })
 }
 
