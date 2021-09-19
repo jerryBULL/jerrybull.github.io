@@ -91,7 +91,7 @@ header .header__nav ul li a:hover{
 /* body start */
 .body{
     display: flex;
-    width: 1000px;
+    width: 1300px;
     min-height: 60vh;
     margin: 0 auto;
     background-color: #263859;
@@ -128,8 +128,8 @@ header .header__nav ul li a:hover{
     display: flex;
     justify-content: space-between;
     color: #cfc5b0;
-    font-size: 0.7rem;
-    width: 650px;
+    font-size: 1rem;
+    width: 90%;
     margin: 0.7rem auto;
 }
 .body .content .article__info-tag{
@@ -153,8 +153,11 @@ header .header__nav ul li a:hover{
     display: block;
     margin: 0 auto;
     border-radius: 15px;
-    width: 650px;
+    width: 90%;
     transition: all 0.5s;
+}
+.body .list_content .article__img{
+    width: 75%;
 }
 .body .content .article__img:hover{
     filter:brightness(1.1)
@@ -192,10 +195,9 @@ header .header__nav ul li a:hover{
 /*-----文章內容樣式 start-----*/
 .body .content .article__content{
     margin: 1rem auto 0 auto;
-    padding: 0 1rem;
     color: #cfc5b0;
     letter-spacing: 3px;
-    width: 650px;
+    width: 90%;
 }
 .body .content .article__content p{
     margin-bottom: 0.5rem;
@@ -287,6 +289,7 @@ header .header__nav ul li a:hover{
     font-weight: bold;
     color: #cfc5b0;
     margin: 0;
+    font-size: 1.5rem;
 }
 .sidebar-box__line{
     margin: 0.3rem 0;
@@ -294,16 +297,15 @@ header .header__nav ul li a:hover{
 }
 .sidebar-box ul li{
     word-break: break-all;
+    font-size: 1rem;
 }
 .sidebar-box ul li:not(:first-child){
-    margin-top: 0.3rem;
+    margin-top: 0.5rem;
 }
 .sidebar-box__article-title{
     cursor: pointer;
     transition: all 0.5s;
-    font-size: 0.7rem;
     color: #cfc5b0;
-    margin-left: 0.2rem;
 }
 .sidebar-box__article-title:hover{
     transition: all 0.5s;
@@ -321,7 +323,6 @@ header .header__nav ul li a:hover{
 .sidebar-box__category{
     cursor: pointer;
     transition: all 0.5s;
-    font-size: 0.7rem;
     color: #cfc5b0;
     margin-bottom: 0.5rem; 
     margin-right: 0.3rem;
@@ -435,6 +436,11 @@ footer .footer-ul a{
 
 /* RWD start */
 /* RWD start */
+@media (max-width: 1310px) {
+    .body{
+        width: 100%;
+    }
+}
 @media (max-width: 1010px) {
     header{
         min-width: 100%;
