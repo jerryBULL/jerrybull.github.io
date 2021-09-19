@@ -191,34 +191,47 @@ header .header__nav ul li a:hover{
 /*-----頁面列表顯示 end-----*/
 /*-----文章內容樣式 start-----*/
 .body .content .article__content{
-    margin: 1.5rem auto 0 auto;
+    margin: 1rem auto 0 auto;
     padding: 0 1rem;
     color: #cfc5b0;
     letter-spacing: 3px;
     width: 650px;
 }
 .body .content .article__content p{
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+    line-height: 1.2;
+}
+.body .content .article__content .article__title-heading1,
+.body .content .article__content .article__title-heading2,
+.body .content .article__content .article__title-heading3,
+.body .content .article__content .article__title-heading4,
+.body .content .article__content .article__title-heading5{
+    color: #ffebc4;
+    font-weight: bold;
+    margin-top: 0.7rem;
+    margin-bottom: 0.7rem;
 }
 .body .content .article__content .article__title-heading1{
     font-size: 2rem;
-    color: #ffebc4;
 }
 .body .content .article__content .article__title-heading2{
     font-size: 1.8rem;
-    color: #ffebc4;
 }
 .body .content .article__content .article__title-heading3{
     font-size: 1.6rem;
-    color: #ffebc4;
 }
 .body .content .article__content .article__title-heading4{
     font-size: 1.4rem;
-    color: #ffebc4;
 }
 .body .content .article__content .article__title-heading5{
     font-size: 1.2rem;
+}
+.body .content .article__content .article__small_title{
+    font-size: 1.2rem;
     color: #ffebc4;
+    font-weight: bold;
+    margin: 0;
 }
 .body .content .article__content .article__hr{
     height: 0.1rem;
@@ -229,6 +242,10 @@ header .header__nav ul li a:hover{
     color: #ff6768;
     font-weight: 600;
     margin: 0 0.5rem;
+}
+.body .content .article__content .article__mark_no_margin{
+    color: #ff6768;
+    font-weight: 600;
 }
 .body .content .article__content .article__link{
     margin: 0 0.5rem;
@@ -467,6 +484,9 @@ footer .footer-ul a{
     .body .content .article__content{
         width: 100%;
         min-width: 450px;
+    }
+    .body .content .article__content p{
+        margin-bottom: 0.7rem;
     }
 /*-----------------------------------------*/
     footer{
