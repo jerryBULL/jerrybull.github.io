@@ -54,8 +54,9 @@
                             </li>
                         </ul>
                     </div>
-                    <a :href="CurrentArticle.article_route">
+                    <a class="article__img-box" :href="CurrentArticle.article_route">
                         <img :src="CurrentArticle.img_route" class="article__img">
+                        <p class="article__img-place-name" v-if="CurrentArticle.img_place_name != 'none'">{{ CurrentArticle.img_place_name }}</p>
                     </a>
                     <div class="article__content">
                         <!-- 文章內容 start -->

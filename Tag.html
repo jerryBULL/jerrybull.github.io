@@ -55,8 +55,9 @@
                             </li>
                         </ul>
                     </div>
-                    <a :href="article.article_route">
-                        <img :src="article.img_route" class="article__img" alt="主圖片">
+                    <a class="article__img-box" :href="article.article_route">
+                        <img :src="article.img_route" class="article__img">
+                        <p class="article__img-place-name" v-if="article.img_place_name != 'none'">{{ article.img_place_name }}</p>
                     </a>
                 </div>
                 <div class="page-box">
