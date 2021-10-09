@@ -2,8 +2,8 @@
 <html lang="zh-Hant-TW">
     <head>
         <meta charset="UTF-8" />
-        <title>CSS權重(CSS Specificity)-Jerry的學習筆記</title>
-        <meta name="description" content="大概介紹CSS權重(CSS Specificity)，權重的意思就是CSS的優先權。優先權越高就會覆蓋掉優先權低的樣式。"/>
+        <title>PHP-inculd&require差別-Jerry的學習筆記</title>
+        <meta name="description" content="比較PHP中的include、include_once、require以及require_once四種差別"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="icon" href="/Content/img/favicon.ico" type="image/x-icon">
         <!-- jquery-confirm start -->
@@ -61,61 +61,46 @@
                     <div class="article__content">
                         <!-- 文章內容 start -->
                         <p class="article__title-heading1">前言</p>
-                        <p>權重的意思就是CSS的優先權。</p>
-                        <p>當兩個選擇器同時作用在一個元素，權重高的優先生效。</p>
+                        <p>風和日麗的某天，突然想到PHP匯入檔案的方法有兩種</p>
+                        <p>但當下的我卻不能滿上聯想到這兩種方法的差別</p>
+                        <p>於是乎立馬上網尋找相關答案並記錄於此！</p>
                         <hr class="article__hr">
+
                         <p class="article__title-heading1">注意事項</p>
-                        <ul class="article__ul-circle">
-                            <li>由權重低依序向上介紹。</li>
-                            <li>
-                                權重大小最左邊的權重最高，最右邊的權重最低。
-                                <p>ex：0-0-0-1 < 0-0-1-0</p>
-                            </li>
-                            <li>如果權重相同時，越後面寫的的會覆蓋掉前面的。</li>
-                        </ul>
+                        <p>正確來說應該算四種方法，但小弟記憶力不好用偷懶的方法記XD</p>
+                        <p>加上目前程式架構比較嚴謹，很少會發生同時匯入兩種相同檔案的情況</p>
+                        <p>所以較常使用 require 來匯入檔案！</p>
                         <hr class="article__hr">
-                        <p class="article__title-heading1">各個權重介紹</p>
-                        <p class="article__small_title">*</p>
-                        <p class="article__mark_no_margin">0-0-0-0</p>
-                        <p>全站預設值。</p>
+
+                        <p class="article__title-heading1">正文開始</p>
+                        <p class="article__small_title">inculde：</p>
+                        <p>當用 include 請求一個不存在的檔案時<span class="article__mark">只會報 Warning 且繼續執行下面的動做</span>。</p>
                         <div class="spaceH0_75"></div>
-                        <p class="article__small_title">element</p>
-                        <p class="article__mark_no_margin">0-0-0-1</p>
-                        <p>
-                            element種類很多，例如：div、ul、li....等，可查看
-                            <a class="article__link" target="_blank" href="https://developer.mozilla.org/zh-TW/docs/Web/HTML/Element">HTML元素</a>。
-                        </p>
+
+                        <p class="article__small_title">include_once：</p>
+                        <p class="article__mark_no_margin">*性能下降，因為需要判斷是否包含過</p>
+                        <p>include_once 可避免同時匯入相同檔案。</p>
+                        <p>舉個例子：</p>
+                        <p>假定 test.php 檔案包含許多函式，使用 include 語句將它匯入到現有的檔案中，然後又匯入一個包含 test.php 的檔案，這時已經將 test.php 檔案匯入兩次，這時就會產生錯誤，因為試圖多次定義同名的變數或函式。</p>
+                        <p>為了避免這樣的情況發生，就會使用 include_once 來代替 include。</p>
                         <div class="spaceH0_75"></div>
-                        <p class="article__small_title">attribute（屬性選擇器）</p>
-                        <p class="article__mark_no_margin">0-0-1-0。</p>
-                        <p>[type=email]、[type:checkbox]、[attr]...等</p>
+
+                        <p class="article__small_title">require：</p>
+                        <p>與 inculde 的最大差別為請求一個不存在的檔案<span class="article__mark">會報錯且不繼續執行下面的動做</span>。</p>
                         <div class="spaceH0_75"></div>
-                        <p class="article__small_title">psuedo-class（偽類）</p>
-                        <p class="article__mark_no_margin">0-0-1-0。</p>
-                        <p>:link、:hover、:focus、:nth-child()...等。</p>
-                        <div class="spaceH0_75"></div>
-                        <p class="article__small_title">class</p>
-                        <p class="article__mark_no_margin">0-0-1-0</p>
-                        <div class="spaceH0_75"></div>
-                        <p class="article__small_title">id</p>
-                        <p class="article__mark_no_margin">0-1-0-0</p>
-                        <div class="spaceH0_75"></div>
-                        <p class="article__small_title">inline style</p>
-                        <p class="article__mark_no_margin">1-0-0-0</p>
-                        <p>直接寫在Html行內的style。</p>
-                        <div class="spaceH0_75"></div>
-                        <p class="article__small_title">!important</p>
-                        <p class="article__mark_no_margin">1-0-0-0-0</p>
-                        <p>最強大的存在，只有自己(!important)能夠超越自己。</p>
-                        <p>使用時需要謹慎使用，不然當樣式多了會很難維護。</p>
+
+                        <p class="article__small_title">require_once：</p>
+                        <p class="article__mark_no_margin">*性能下降，因為需要判斷是否包含過</p>
+                        <p>和 require 語句完全相同，唯一區別是 PHP 會檢查該文件是否已經被包含過，如果是則不會再次包含。</p>
                         <hr class="article__hr">
-                        <p class="article__title-heading1">好文推薦</p>
+
+                        <p class="article__title-heading1">參考文章</p>
                         <ul class="article__ul-number">
                             <li>
-                                <a class="article__link" target="_blank" href="https://muki.tw/tech/css-specificity-document/">強烈推薦收藏好物 – CSS Specificity (CSS 權重一覽)</a>
+                                <a class="article__link" target="_blank" href="https://codertw.com/%E7%A8%8B%E5%BC%8F%E8%AA%9E%E8%A8%80/213553/">簡單談談PHP中的include、include_once、require以及require_once語句</a>
                             </li>
                             <li>
-                                <a class="article__link" target="_blank" href="https://ithelp.ithome.com.tw/articles/10196454">Day20：小事之 CSS 權重 (css specificity)</a>
+                                <a class="article__link" target="_blank" href="https://kknews.cc/zh-tw/code/5rxmlb6.html">PHP函數include include_once require和require_once的區別</a>
                             </li>
                         </ul>
                         <!-- 文章內容 end -->
