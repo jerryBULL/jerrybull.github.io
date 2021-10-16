@@ -336,7 +336,6 @@ header .header__nav ul li a:hover{
     flex-wrap: wrap;
     justify-content: flex-start;
 }
-.sidebar-box__tag,
 .sidebar-box__category{
     cursor: pointer;
     transition: all 0.5s;
@@ -345,6 +344,19 @@ header .header__nav ul li a:hover{
     margin-right: 0.3rem;
     font-weight: 500;
     font-family: monospace;
+}
+.sidebar-box__tag{
+    cursor: pointer;
+    transition: all 0.5s;
+    color: #cfc5b0;
+    margin-bottom: 0.5rem;
+    margin-right: 0.3rem;
+    font-weight: 500;
+    font-family: monospace;
+    border: 2px solid #cfc5b0;
+    font-size: 0.7rem;
+    padding: 5px;
+    border-radius: 25px;
 }
 .sidebar-box__tag:hover,
 .sidebar-box__category:hover{
