@@ -8,6 +8,15 @@ const Article = {
     //     img_place_name : "none",//圖片地名，none不顯示
     //     article_route:"/Article/2021/08/Demo.html",
     // },
+    "HTML_script-tag_async&defer" : {
+        title : "Html-script tag裡的async&defer用意",
+        tag : ["html"],
+        category : "front_end",
+        create_time : "2022/02/02",
+        img_route : "/Content/img/Article/2022/02/HTML_script-tag_async&defer/HTML_script-tag_async&defer.jpg",
+        img_place_name : "苗栗雪霸國家公園",
+        article_route:"/Article/2022/02/HTML_script-tag_async&defer.html",
+    },
     "PHP_inculd&require" : {
         title : "PHP-inculd&require差別",
         tag : ["php"],

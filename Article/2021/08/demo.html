@@ -56,9 +56,10 @@
                     </div>
                     <a class="article__img-box">
                         <img :src="CurrentArticle.img_route" class="article__img">
-                        <p class="article__img-place-name" v-if="CurrentArticle.img_place_name != 'none'">{{ CurrentArticle.img_place_name }}</p>
+                        <p class="article__img-place-name" v-if="CurrentArticle.img_place_name != 'none' && CurrentArticle.img_place_name != ''">{{ CurrentArticle.img_place_name }}</p>
                     </a>
                     <div class="article__content">
+
                         <!-- 文章內容 start -->
                         <p class="article__title-heading1">heading1</p>
                         <p class="article__title-heading2">heading2</p>
@@ -91,6 +92,7 @@ function(){
 }
 </pre>
                         <!-- 文章內容 end -->
+
                     </div>
                 </div>
             </div>
