@@ -57,7 +57,7 @@
                     </div>
                     <a class="article__img-box" :href="article.article_route">
                         <img :src="article.img_route" class="article__img">
-                        <p class="article__img-place-name" v-if="article.img_place_name != 'none'">{{ article.img_place_name }}</p>
+                        <p class="article__img-place-name" v-if="article.img_place_name != 'none' && article.img_place_name != ''">{{ article.img_place_name }}</p>
                     </a>
                 </div>
                 <div class="page-box">

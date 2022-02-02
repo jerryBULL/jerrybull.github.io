@@ -1,7 +1,10 @@
 <!-- 火箭 -->
 <span class="rocket-icon icon rocket--js"></span>
 
-<p>© 2021-2021&emsp;<a href="/index.html">Jerry的學習筆記</a></p>
+<p>
+    <span class="footer-year--js"></span>&emsp;
+    <a href="/index.html">Jerry的學習筆記</a>
+</p>
 <ul class="footer-ul">
     <li>
         <a href="https://github.com/jerryBULL"><span class="fa fa-github"></span></a>
@@ -34,5 +37,12 @@
                 $(".rocket--js").fadeOut("fast");
             }
         });
+
+        //footer-year Start
+        let now_date = new Date();
+        let now_year = now_date.getFullYear();
+        let footer_year_text = `© 2021-${now_year}`;
+        $('.footer-year--js').text(footer_year_text);
+        //footer-year End
     })
 </script>
