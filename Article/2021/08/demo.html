@@ -42,30 +42,7 @@
         <div class="body" v-cloak>
             <div class="content">
                 <div class="article">
-                    <a href="" class="article__title" onclick='return false;'>{{ CurrentArticle.title }}</a>
-                    <hr class="article__line">
-                    <div class="article__info">
-                        <div>
-                            <span>{{ CurrentArticle.create_time }}</span>
-                        </div>
-                        <ul class="article__info-tag">
-                            <li v-for="tag in CurrentArticle.tag">
-                                <a @Click="ShowTagArticle(tag)">{{ ArticleTag[tag] }}</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <a class="article__img-box" :style="{ 'background-image': 'url(' + CurrentArticle.img_route + ')' }">
-                        <div class="article__img-content-box">
-                            <div class="article__img-content flex-center">
-                                <div class="img-content_content" v-html="CurrentArticle.img_content"></div>
-                                <hr>
-                                <div class="img-content_create-time">
-                                    {{ CurrentArticle.create_time }}
-                                </div>
-                            </div>
-                        </div>
-                        <p class="article__img-place-name" v-if="CurrentArticle.img_place_name != 'none' && CurrentArticle.img_place_name != ''">{{ CurrentArticle.img_place_name }}</p>
-                    </a>
+                    <article-header :article_tag="ArticleTag" :current_article="CurrentArticle"></article-header>
                     <div class="article__content">
                         <!-- 文章內容 start -->
                         <p class="article__title-heading1">heading1</p>
@@ -102,7 +79,7 @@ function(){
                     </div>
                 </div>
             </div>
-            <sidebar-component :article_tag="ArticleTag" :article="Article" :article_tag="ArticleTag"><sidebar-component>
+            <sidebar-component :article_tag="ArticleTag" :article="Article" :article_tag="ArticleTag"></sidebar-component>
         </div>
         <footer></footer>
     </body>
