@@ -54,8 +54,16 @@
                             </li>
                         </ul>
                     </div>
-                    <a class="article__img-box">
-                        <img :src="CurrentArticle.img_route" class="article__img">
+                    <a class="article__img-box" :style="{ 'background-image': 'url(' + CurrentArticle.img_route + ')' }">
+                        <div class="article__img-content-box">
+                            <div class="article__img-content flex-center">
+                                <div class="img-content_content" v-html="CurrentArticle.img_content"></div>
+                                <hr>
+                                <div class="img-content_create-time">
+                                    {{ CurrentArticle.create_time }}
+                                </div>
+                            </div>
+                        </div>
                         <p class="article__img-place-name" v-if="CurrentArticle.img_place_name != 'none' && CurrentArticle.img_place_name != ''">{{ CurrentArticle.img_place_name }}</p>
                     </a>
                     <div class="article__content">

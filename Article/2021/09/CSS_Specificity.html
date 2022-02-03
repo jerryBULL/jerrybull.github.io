@@ -54,24 +54,29 @@
                             </li>
                         </ul>
                     </div>
-                    <a class="article__img-box">
-                        <img :src="CurrentArticle.img_route" class="article__img">
-                        <p class="article__img-place-name" v-if="CurrentArticle.img_place_name != 'none'">{{ CurrentArticle.img_place_name }}</p>
+                    <a class="article__img-box" :style="{ 'background-image': 'url(' + CurrentArticle.img_route + ')' }">
+                        <div class="article__img-content-box">
+                            <div class="article__img-content flex-center">
+                                <div class="img-content_content" v-html="CurrentArticle.img_content"></div>
+                                <hr>
+                                <div class="img-content_create-time">
+                                    {{ CurrentArticle.create_time }}
+                                </div>
+                            </div>
+                        </div>
+                        <p class="article__img-place-name" v-if="CurrentArticle.img_place_name != 'none' && CurrentArticle.img_place_name != ''">{{ CurrentArticle.img_place_name }}</p>
                     </a>
                     <div class="article__content">
                         <!-- 文章內容 start -->
-                        <p class="article__title-heading1">前言</p>
-                        <p>權重的意思就是CSS的優先權。</p>
-                        <p>當兩個選擇器同時作用在一個元素，權重高的優先生效。</p>
-                        <hr class="article__hr">
                         <p class="article__title-heading1">注意事項</p>
                         <ul class="article__ul-circle">
+                            <li>權重的意思就是CSS的優先權。</li>
+                            <li>當兩個選擇器同時作用在一個元素，權重高的優先生效。</li>
                             <li>由權重低依序向上介紹。</li>
                             <li>
                                 權重大小最左邊的權重最高，最右邊的權重最低。
                                 <p>ex：0-0-0-1 < 0-0-1-0</p>
                             </li>
-                            <li>如果權重相同時，越後面寫的的會覆蓋掉前面的。</li>
                         </ul>
                         <hr class="article__hr">
                         <p class="article__title-heading1">各個權重介紹</p>
