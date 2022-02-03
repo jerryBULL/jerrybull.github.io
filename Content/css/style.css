@@ -183,6 +183,7 @@ header .header__nav ul li a:hover{
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
+    user-select: none;
 }
 .body .content .article__img-content-box .article__img-content .img-content_content{
     font-size: 1.7rem;

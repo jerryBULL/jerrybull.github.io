@@ -6,7 +6,8 @@ if(IsArticlePage()){
         let ArticleBody = new Vue({
             el:".body",
             components: {
-                'sidebar-component': httpVueLoader('/View/vue_component/sidebar.vue')
+                'sidebar-component': httpVueLoader('/View/vue_component/sidebar.vue'),
+                'article-header': httpVueLoader('/View/vue_component/articleHeader.vue')
             },
             data:function(){
                 return{
@@ -23,6 +24,7 @@ if(IsArticlePage()){
                         title : "Demo",
                         tag : ["html","css"],
                         category : "front_end",
+                        img_content : "Demo",
                         create_time : "2021/08/14",
                         img_route : "/Content/img/Article/2021/08/Demo/Demo.jpg",
                         article_route:"/Article/2021/08/Demo.html",
