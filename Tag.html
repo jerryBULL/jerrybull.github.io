@@ -40,9 +40,7 @@
                 <div class="article" v-if="PageArticle.length == 0">
                     <a class="article__title">小弟還在努力學習中</a>
                     <hr class="article__line">
-                    <a>
-                        <img src="/Content/img/nothing.jpg" class="article__img" alt="目前尚未撰寫文章">
-                    </a>
+                    <a class="article__img-box" style="background-image: url(/Content/img/nothing.jpg)"></a>
                 </div>
                 <div class="article" v-for="article in PageArticle[CurrentPage]">
                     <a :href="article.article_route" class="article__title">{{ article.title }}</a>
@@ -55,9 +53,17 @@
                             </li>
                         </ul>
                     </div>
-                    <a class="article__img-box" :href="article.article_route">
-                        <img :src="article.img_route" class="article__img">
-                        <p class="article__img-place-name" v-if="article.img_place_name != 'none'">{{ article.img_place_name }}</p>
+                    <a class="article__img-box" :href="article.article_route" :style="{ 'background-image': 'url(' + article.img_route + ')' }">
+                        <div class="article__img-content-box">
+                            <div class="article__img-content flex-center">
+                                <div class="img-content_content" v-html="article.img_content"></div>
+                                <hr>
+                                <div class="img-content_create-time">
+                                    {{ article.create_time }}
+                                </div>
+                            </div>
+                        </div>
+                        <p class="article__img-place-name" v-if="article.img_place_name != 'none' && article.img_place_name != ''">{{ article.img_place_name }}</p>
                     </a>
                 </div>
                 <div class="page-box">
