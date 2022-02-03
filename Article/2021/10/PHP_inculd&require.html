@@ -68,21 +68,10 @@
                     </a>
                     <div class="article__content">
                         <!-- 文章內容 start -->
-                        <p class="article__title-heading1">前言</p>
-                        <p>風和日麗的某天，突然想到PHP匯入檔案的方法有兩種</p>
-                        <p>但當下的我卻不能滿上聯想到這兩種方法的差別</p>
-                        <p>於是乎立馬上網尋找相關答案並記錄於此！</p>
-                        <hr class="article__hr">
-
-                        <p class="article__title-heading1">注意事項</p>
-                        <p>正確來說應該算四種方法，但小弟記憶力不好用偷懶的方法記XD</p>
-                        <p>加上目前程式架構比較嚴謹，很少會發生同時匯入兩種相同檔案的情況</p>
-                        <p>所以較常使用 require 來匯入檔案！</p>
-                        <hr class="article__hr">
-
                         <p class="article__title-heading1">正文開始</p>
                         <p class="article__small_title">inculde：</p>
                         <p>當用 include 請求一個不存在的檔案時<span class="article__mark">只會報 Warning 且繼續執行下面的動做</span>。</p>
+                        <p>PHP讀到 include 時，才將它包含的文件讀取進來。</p>
                         <div class="spaceH0_75"></div>
 
                         <p class="article__small_title">include_once：</p>
@@ -95,11 +84,20 @@
 
                         <p class="article__small_title">require：</p>
                         <p>與 inculde 的最大差別為請求一個不存在的檔案<span class="article__mark">會報錯且不繼續執行下面的動做</span>。</p>
+                        <p>PHP在執行前，就會先讀取 require 所引入的文件。</p>
                         <div class="spaceH0_75"></div>
 
                         <p class="article__small_title">require_once：</p>
                         <p class="article__mark_no_margin">*性能下降，因為需要判斷是否包含過</p>
                         <p>和 require 語句完全相同，唯一區別是 PHP 會檢查該文件是否已經被包含過，如果是則不會再次包含。</p>
+                        <hr class="article__hr">
+
+                        <p class="article__title-heading1">總結</p>
+                        <ul class="article__ul-number">
+                            <li>檔案不存在時，include 會繼續執行；require 則會停下。</li>
+                            <li>include 可以用在迴圈；require 不行。</li>
+                            <li>有沒有 _once 的差別就在 PHP 是否會檢查該檔案是否已經匯入過。</li>
+                        </ul>
                         <hr class="article__hr">
 
                         <p class="article__title-heading1">參考文章</p>
