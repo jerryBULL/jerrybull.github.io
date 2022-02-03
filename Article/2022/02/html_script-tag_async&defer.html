@@ -42,30 +42,7 @@
         <div class="body" v-cloak>
             <div class="content">
                 <div class="article">
-                    <a href="" class="article__title" onclick='return false;'>{{ CurrentArticle.title }}</a>
-                    <hr class="article__line">
-                    <div class="article__info">
-                        <div>
-                            <span>{{ CurrentArticle.create_time }}</span>
-                        </div>
-                        <ul class="article__info-tag">
-                            <li v-for="tag in CurrentArticle.tag">
-                                <a @Click="ShowTagArticle(tag)">{{ ArticleTag[tag] }}</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <a class="article__img-box" :style="{ 'background-image': 'url(' + CurrentArticle.img_route + ')' }">
-                        <div class="article__img-content-box">
-                            <div class="article__img-content flex-center">
-                                <div class="img-content_content" v-html="CurrentArticle.img_content"></div>
-                                <hr>
-                                <div class="img-content_create-time">
-                                    {{ CurrentArticle.create_time }}
-                                </div>
-                            </div>
-                        </div>
-                        <p class="article__img-place-name" v-if="CurrentArticle.img_place_name != 'none' && CurrentArticle.img_place_name != ''">{{ CurrentArticle.img_place_name }}</p>
-                    </a>
+                    <article-header :article_tag="ArticleTag" :current_article="CurrentArticle"></article-header>
                     <div class="article__content">
 
                         <!-- 文章內容 start -->
@@ -76,7 +53,7 @@
 </pre>
                         <div class="spaceH0_75"></div>
                         <ul class="article__ul-circle">
-                            <li>瀏覽器讀到 &lt;script&gt; 時，便會暫停解析 DOM，而是立刻開始下載 &lt;script&gt; 的資源，並在下載後立刻執行。</li>
+                            <li>瀏覽器讀到 &lt;script&gt; 時，便會暫停解析 DOM，立刻開始下載 &lt;script&gt; 的資源，並在下載後立刻執行。</li>
                             <li>會中斷 DOM 元素載入，載入並執行完 JS 在繼續。</li>
                         </ul>
                         <a href="/Content/img/Article/2022/02/HTML_script-tag_async&defer/img01.PNG" data-lightbox="image-1" data-title="不加async&defer時的示意圖">
@@ -110,6 +87,11 @@
                         <a href="/Content/img/Article/2022/02/HTML_script-tag_async&defer/img03.PNG" data-lightbox="image-1" data-title="加defer時的示意圖">
                             <img class="article_img" src="/Content/img/Article/2022/02/HTML_script-tag_async&defer/img03.PNG" alt="加defer時的示意圖">
                         </a>
+                        <div class="spaceH0_75"></div>
+
+                        <p class="article__title-heading2">總結</p>
+                            <p>defer 由於背景載入、不打斷渲染及確保執行順序的特色，基本上沒特別需求的話，&lt;script&gt; 都設定一下。</p>
+                            <p>async 下載後會立刻執行，一般常見的應用是設定在完全獨立的功能，例如 GA、頁面廣告等等，在避免造成使用者體驗變差的同時，盡量提早開始產生效果。</p>
                         <div class="spaceH0_75"></div>
 
                         <p class="article__title-heading1">參考文章</p>
