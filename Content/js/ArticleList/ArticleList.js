@@ -14,8 +14,9 @@ const Article = {
         tag : ["html"],
         category : "front_end",
         create_time : "2022/02/02",
+        img_content : "async</br>&</br>defer",
         img_route : "/Content/img/Article/2022/02/HTML_script-tag_async&defer/HTML_script-tag_async&defer.jpg",
-        img_place_name : "苗栗雪霸國家公園",
+        img_place_name : "苗栗雪霸公園",
         article_route:"/Article/2022/02/HTML_script-tag_async&defer.html",
     },
     "PHP_inculd&require" : {
